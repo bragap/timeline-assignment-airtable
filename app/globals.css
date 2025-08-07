@@ -64,6 +64,33 @@
   --color-6: #bc74ff;
 }
 
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card: #1e293b;
+  --card-foreground: #f1f5f9;
+  --popover: #1e293b;
+  --popover-foreground: #f1f5f9;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #334155;
+  --secondary-foreground: #f1f5f9;
+  --muted: #334155;
+  --muted-foreground: #94a3b8;
+  --accent: #1e293b;
+  --accent-foreground: #f1f5f9;
+  --destructive: #ef4444;
+  --border: #334155;
+  --input: #334155;
+  --ring: #3b82f6;
+  --color-1: #3b82f6;
+  --color-2: #8b5cf6;
+  --color-3: #ec4899;
+  --color-4: #10b981;
+  --color-5: #f59e0b;
+  --color-6: #a855f7;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -71,5 +98,9 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background: var(--background);
   }
 }

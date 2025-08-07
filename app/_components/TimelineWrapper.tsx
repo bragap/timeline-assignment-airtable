@@ -14,7 +14,6 @@ export default function TimelineWrapper() {
                 item.id === updatedItem.id ? updatedItem : item
             )
         );
-        console.log('Item atualizado:', updatedItem);
     };
 
     return (

@@ -3,15 +3,31 @@ import calculateItemPosition from '@/lib/functions/calculateItemPosition';
 import { endDate, laneColors, startDate } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import { TimelineItem, TimelineProps } from '@/lib/types';
-import { useState } from 'react';
-import { Pencil, Search } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Pencil, Search, Sun, Moon } from 'lucide-react';
 
 export default function Timeline<T extends TimelineItem>({ items, onItemUpdate, editable = false, showZoomControls = true }: TimelineProps<T>) {
     const [editingItem, setEditingItem] = useState<number | null>(null);
     const [editValue, setEditValue] = useState<string>('');
     const [zoomLevel, setZoomLevel] = useState(1);
+    const [isDark, setIsDark] = useState(false);
     const containerWidth = 1250;
     const lanes = assignLanes([...items]);
+
+    useEffect(() => {
+        setIsDark(document.documentElement.classList.contains('dark'));
+    }, []);
+
+    const toggleTheme = () => {
+        const newIsDark = !isDark;
+        setIsDark(newIsDark);
+        
+        if (newIsDark) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    };
 
     const handleItemDoubleClick = (item: T) => {
         if (!editable) return;
@@ -57,7 +73,16 @@ export default function Timeline<T extends TimelineItem>({ items, onItemUpdate, 
     return (
         <section className="w-full flex h-screen flex-col items-center bg-background py-8">
             <div className="w-full max-w-7xl flex flex-col items-center pb-4">
-                <div className="text-3xl font-semibold mb-1">Timeline Assignment</div>
+                <div className="flex items-center gap-4 mb-1">
+                    <div className="text-3xl font-semibold">Timeline Assignment</div>
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 rounded-lg bg-muted hover:bg-muted/80 transition-colors cursor-pointer"
+                        title="Toggle theme"
+                    >
+                        {isDark ? <Sun size={20} /> : <Moon size={20} />}
+                    </button>
+                </div>
                 <div className="text-sm text-muted-foreground text-center space-y-1">
                     {editable && (
                         <div className="flex items-center gap-1 justify-center"><Pencil height={20} /> Double-tap any item to edit its name.</div>
@@ -78,7 +103,7 @@ export default function Timeline<T extends TimelineItem>({ items, onItemUpdate, 
                             <button
                                 onClick={handleZoomOut}
                                 className="flex items-center gap-1 px-3 py-2 text-sm bg-muted hover:bg-muted/80 rounded-md cursor-pointer transition-colors"
-                                title="Reduzir zoom"
+                                title="Zoom out"
                             >
                                 <Search height={20} />-
                             </button>
@@ -88,16 +113,16 @@ export default function Timeline<T extends TimelineItem>({ items, onItemUpdate, 
                             <button
                                 onClick={handleZoomIn}
                                 className="flex items-center gap-1 px-3 py-2 text-sm bg-muted hover:bg-muted/80 rounded-md cursor-pointer transition-colors"
-                                title="Ampliar zoom"
+                                title="Zoom in"
                             >
                                 <Search height={20} />+
                             </button>
                             <button
                                 onClick={handleZoomReset}
                                 className="px-3 py-2 text-sm bg-muted hover:bg-muted/80 rounded-md cursor-pointer transition-colors ml-2"
-                                title="Resetar zoom"
+                                title="Reset zoom"
                             >
-                                Reset
+                                100%
                             </button>
                         </div>
                     )}
@@ -121,7 +146,7 @@ export default function Timeline<T extends TimelineItem>({ items, onItemUpdate, 
                                                 "top-2 z-[2] h-[55px]",
                                                 laneColors[laneIndex % laneColors.length],
                                                 editable ? "cursor-pointer hover:shadow-lg hover:scale-105" : "cursor-default",
-                                                editingItem === item.id ? "ring-2 ring-blue-500 shadow-lg scale-105" : ""
+                                                editingItem === item.id ? "ring-2 ring-primary shadow-lg scale-105" : ""
                                             )}
                                             style={{
                                                 left: left,
