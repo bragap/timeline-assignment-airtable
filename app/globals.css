@@ -8,6 +8,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-color-6: var(--color-6);
   --color-color-5: var(--color-5);
   --color-color-4: var(--color-4);
   --color-color-3: var(--color-3);
@@ -55,17 +56,19 @@
   --border: #ced1d4;
   --input: #dbeafe;
   --ring: #2563eb;
-  --color-1: #2563eb;
-  --color-2: #60a5fa;
-  --color-3: #38bdf8;
-  --color-4: #0ea5e9;
-  --color-5: #3054ce;
+  --color-1: #3b82f6;
+  --color-2: #5658c0;
+  --color-3: #ec4899;
+  --color-4: #10b981;
+  --color-5: #f59e0b;
+  --color-6: #a855f7;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

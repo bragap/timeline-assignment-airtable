@@ -17,12 +17,8 @@ export default function Timeline<T extends TimelineItem>({ items }: TimelineProp
             <div className="w-full max-w-7xl border rounded-xl shadow-md h-[650px] p-1">
 
                 <div className="flex justify-between w-full border-b bg-background p-3">
-                    <div className="text-primary">
-                        {startDate.toLocaleDateString()}
-                    </div>
-                    <div className="text-primary">
-                        {endDate.toLocaleDateString()}
-                    </div>
+                    <p>{startDate.toLocaleDateString()} </p>
+                    <p>{endDate.toLocaleDateString()}</p>
                 </div>
 
                 <div className="overflow-x-auto h-[550px] p-2 select-none">

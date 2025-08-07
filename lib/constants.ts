@@ -6,6 +6,7 @@ export const laneColors = [
     'bg-color-3',
     'bg-color-4',
     'bg-color-5',
+    'bg-color-6',
 ] as const;
 
 export const allItems = timelineItems;
