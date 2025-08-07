@@ -7,9 +7,10 @@ A modern, interactive timeline component built with Next.js that efficiently org
 This Timeline Assignment application showcases:
 - **Intelligent Lane Assignment**: Items are organized in compact horizontal lanes using an efficient algorithm
 - **Space Optimization**: When item A ends before item B starts, they can share the same lane instead of being rendered separately
+- **Inline Editing**: Double-click any timeline item to edit its name directly (when editable mode is enabled)
 - **Visual Milestones**: All start dates are displayed as visual markers at the top for easy navigation
 - **Responsive Design**: Built with Tailwind CSS using a custom purple color scheme
-- **Interactive Features**: Hover effects and detailed tooltips for each timeline item
+- **Interactive Features**: Hover effects, detailed tooltips, and smooth animations for each timeline item
 
 ## Getting Started
 
@@ -84,6 +85,23 @@ The timeline uses an intelligent algorithm that:
 - **Responsive Layout**: Adapts to different screen sizes
 - **Clean Typography**: Uses Geist font family for optimal readability
 - **Intuitive Tooltips**: Show item details on hover
+- **Interactive Animations**: Smooth hover effects and scale transitions
+
+### Inline Editing Feature
+The timeline supports real-time editing of item names:
+
+**How to Use:**
+1. Set `editable={true}` when rendering the Timeline component
+2. Provide an `onItemUpdate` callback function
+3. Double-click any timeline item to start editing
+4. Press `Enter` to save or `Escape` to cancel
+5. Click outside the input to save automatically
+
+**Visual Indicators:**
+- Hover effects show editability
+- Ring highlight during editing
+- Smooth scale animations
+- Helpful tooltip instructions
 
 ### Data Structure
 Each timeline item contains:

@@ -1,6 +1,5 @@
-import timelineItems from '@/lib/data/timelineItems';
-import Timeline from './_components/Timeline';
+import TimelineWrapper from './_components/TimelineWrapper';
 
 export default function Home() {
-  return <Timeline items={[...timelineItems]} />
+  return <TimelineWrapper />;
 }
