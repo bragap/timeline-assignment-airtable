@@ -4,6 +4,7 @@ import { endDate, laneColors, startDate } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import { TimelineItem, TimelineProps } from '@/lib/types';
 import { useState } from 'react';
+import { Pencil, Search } from 'lucide-react';
 
 export default function Timeline<T extends TimelineItem>({ items, onItemUpdate, editable = false, showZoomControls = true }: TimelineProps<T>) {
     const [editingItem, setEditingItem] = useState<number | null>(null);
@@ -42,11 +43,11 @@ export default function Timeline<T extends TimelineItem>({ items, onItemUpdate, 
     };
 
     const handleZoomIn = () => {
-        setZoomLevel(prev => Math.min(prev * 1.25, 2)); 
+        setZoomLevel(prev => Math.min(prev * 1.25, 2));
     };
 
     const handleZoomOut = () => {
-        setZoomLevel(prev => Math.max(prev / 1.25, 0.75)); 
+        setZoomLevel(prev => Math.max(prev / 1.25, 0.75));
     };
 
     const handleZoomReset = () => {
@@ -59,10 +60,10 @@ export default function Timeline<T extends TimelineItem>({ items, onItemUpdate, 
                 <div className="text-3xl font-semibold mb-1">Timeline Assignment</div>
                 <div className="text-sm text-muted-foreground text-center space-y-1">
                     {editable && (
-                        <p>📝 Double-tap any item to edit its name.</p>
+                        <div className="flex items-center gap-1 justify-center"><Pencil height={20} /> Double-tap any item to edit its name.</div>
                     )}
                     {showZoomControls && (
-                        <p>🔍 Use the zoom controls to enlarge or reduce the view.</p>
+                        <div className="flex items-center gap-1 justify-center"><Search height={20} /> Use the zoom controls to enlarge or reduce the view.</div>
                     )}
                 </div>
             </div>
@@ -71,36 +72,36 @@ export default function Timeline<T extends TimelineItem>({ items, onItemUpdate, 
 
                 <div className="flex justify-between items-center w-full border-b bg-background p-3">
                     <p>{startDate.toLocaleDateString()}</p>
-                    
+
                     {showZoomControls && (
                         <div className="flex items-center gap-2">
                             <button
                                 onClick={handleZoomOut}
-                                className="px-3 py-1 text-sm bg-muted hover:bg-muted/80 rounded-md cursor-pointer transition-colors"
+                                className="flex items-center gap-1 px-3 py-2 text-sm bg-muted hover:bg-muted/80 rounded-md cursor-pointer transition-colors"
                                 title="Reduzir zoom"
                             >
-                                🔍−
+                                <Search height={20} />-
                             </button>
                             <span className="text-xs text-muted-foreground min-w-[60px] text-center">
                                 {Math.round(zoomLevel * 100)}%
                             </span>
                             <button
                                 onClick={handleZoomIn}
-                                className="px-3 py-1 text-sm bg-muted hover:bg-muted/80 rounded-md cursor-pointer transition-colors"
+                                className="flex items-center gap-1 px-3 py-2 text-sm bg-muted hover:bg-muted/80 rounded-md cursor-pointer transition-colors"
                                 title="Ampliar zoom"
                             >
-                                🔍+
+                                <Search height={20} />+
                             </button>
                             <button
                                 onClick={handleZoomReset}
-                                className="px-3 py-1 text-sm bg-muted hover:bg-muted/80 rounded-md cursor-pointer transition-colors ml-2"
+                                className="px-3 py-2 text-sm bg-muted hover:bg-muted/80 rounded-md cursor-pointer transition-colors ml-2"
                                 title="Resetar zoom"
                             >
                                 Reset
                             </button>
                         </div>
                     )}
-                    
+
                     <p>{endDate.toLocaleDateString()}</p>
                 </div>
 
