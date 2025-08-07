@@ -1,12 +1,11 @@
 import timelineItems from "./data/timelineItems";
 
 export const laneColors = [
-    'bg-primary',
-    'bg-secondary',
-    'bg-destructive',
-    'bg-accent',
-    'bg-card',
-    'bg-popover',
+    'bg-color-1',
+    'bg-color-2',
+    'bg-color-3',
+    'bg-color-4',
+    'bg-color-5',
 ] as const;
 
 export const allItems = timelineItems;

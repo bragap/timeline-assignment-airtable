@@ -1,7 +1,7 @@
 import { endDate, startDate } from "../constants";
 import { TimelineItem } from "../types";
 
-export function calculateItemPosition(item: TimelineItem, containerWidth: number) {
+export default function calculateItemPosition(item: TimelineItem, containerWidth: number) {
     const totalDuration = endDate.getTime() - startDate.getTime();
     const itemStart = new Date(item.start).getTime() - startDate.getTime();
     const itemDuration = new Date(item.end).getTime() - new Date(item.start).getTime();
