@@ -1,12 +1,12 @@
 import assignLanes from '@/lib/functions/assignLanes';
 import calculateItemPosition from '@/lib/functions/calculateItemPosition';
-import timelineItems from '../../lib/data/timelineItems';
 import { endDate, laneColors, startDate } from '@/lib/constants';
 import { cn } from '@/lib/utils';
+import { TimelineItem, TimelineProps } from '@/lib/types';
 
-export default function Timeline() {
+export default function Timeline<T extends TimelineItem>({ items }: TimelineProps<T>) {
     const containerWidth = 1250;
-    const lanes = assignLanes([...timelineItems]);
+    const lanes = assignLanes([...items]);
 
     return (
         <section className="w-full flex h-screen flex-col items-center bg-background py-8">

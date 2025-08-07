@@ -6,3 +6,7 @@ export type TimelineItem = {
 };
 
 export type Lane = TimelineItem[];
+
+export interface TimelineProps<T>{
+  items: T[];
+}
