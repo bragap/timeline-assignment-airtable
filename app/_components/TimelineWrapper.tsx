@@ -21,6 +21,7 @@ export default function TimelineWrapper() {
         <Timeline 
             items={items}
             editable={true}
+            showZoomControls={true}
             onItemUpdate={handleItemUpdate}
         />
     );

@@ -11,4 +11,5 @@ export interface TimelineProps<T>{
   items: T[];
   onItemUpdate?: (updatedItem: T) => void;
   editable?: boolean;
+  showZoomControls?: boolean;
 }

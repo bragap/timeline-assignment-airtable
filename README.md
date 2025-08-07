@@ -8,6 +8,7 @@ This Timeline Assignment application showcases:
 - **Intelligent Lane Assignment**: Items are organized in compact horizontal lanes using an efficient algorithm
 - **Space Optimization**: When item A ends before item B starts, they can share the same lane instead of being rendered separately
 - **Inline Editing**: Double-click any timeline item to edit its name directly (when editable mode is enabled)
+- **Zoom Controls**: Amplify or reduce the timeline view with interactive zoom controls (0.25x to 5x zoom)
 - **Visual Milestones**: All start dates are displayed as visual markers at the top for easy navigation
 - **Responsive Design**: Built with Tailwind CSS using a custom purple color scheme
 - **Interactive Features**: Hover effects, detailed tooltips, and smooth animations for each timeline item
@@ -102,6 +103,24 @@ The timeline supports real-time editing of item names:
 - Ring highlight during editing
 - Smooth scale animations
 - Helpful tooltip instructions
+
+### Zoom Controls Feature
+Interactive zoom functionality for detailed timeline exploration:
+
+**How to Use:**
+1. Set `showZoomControls={true}` when rendering the Timeline component
+2. Use the zoom buttons in the timeline header:
+   - **🔍+** - Zoom in (ampliar)
+   - **🔍−** - Zoom out (reduzir)
+   - **100%** - Reset to default zoom
+3. Zoom range: 75% to 200% (0.75x to 2x)
+
+**Features:**
+- Real-time visual feedback showing current zoom percentage
+- Responsive milestone markers that adjust with zoom level
+- Smooth transitions and animations
+- Enhanced timeline navigation for large datasets
+- Automatic container width adjustment
 
 ### Data Structure
 Each timeline item contains:
